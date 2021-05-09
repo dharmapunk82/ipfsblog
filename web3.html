@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>What is the decentralized web, and why should you care?</title>
+    <meta name="description" content="What is the decentralized web, and why should you care?" />
+    <meta name="author" content="Jeff Everett" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body>
+    <h1>What is the decentralized web, or, why are we going this direction?</h1>
+    <p>
+        As I've learned about a wide variety of technologies, when encountering a new and confusing topic, it's often helpful to take a step back, and understand the preceding technologies that led up to the curent implementation.
+
+        Up close and in isolation, web3 concepts don't initially make sense.  From a skeptical old engineer's perspective, we can understand how this looks like a bunch more complexity, and a spiderweb instead of a relatively ordered system where we understand the direct path a request will take, and have tools like OSPF and geoip and such to make sure things are performant. Just another buzzword, more marketing.
+
+        When we look at the first and second evolutions of the internet, however, we can begin to see trends.
+
+        The first major trend we see is towards centralization, and creation of static assets.  As sites begin to populate the early web, no one knows where anything is.  There isn't a widely established way to find content, or even to share content that's online.  Initially, email attachments are the only effective widely usable way, for regular users to share content. As the web matures, a litany of sites compete to allow regular users to share content-- geocities, myspace, facebook, etc. Relatively few users are hosting their own content, and most content created by users is static.
+
+        Fast forward 20 years, from the late 90's and post- y2k dot com bubble era, to the web 2.0 of today.
+
+        We see a continuation of the trend towards centralization, but we also see that this pendulum may be showing signs of swinging the other way.  At the hosting level, certainly, big providers are still the norm, and control the lion's share of the market.  However, we see the introduction of a variety of tools allowing users to host their unique, now often *dynamic* content, first with enthusast oriented devices or software like slingbox and plex, and then broadly with the emergence of the smart home and every sort of camera and sensor imaginable.  We also see a new challenge, akin to large sections of the power grid going down, we see widespread internet outages, when these centralized hosting providers go down.  We also begin to see the limits of a "traditional" networks' efficiency limts, as protocls with millisecond latency begin to struggle under longer and longer distance connections, especially as networks are choked with cat video bits. 
+
+    </p>
+    <h3>Why should you care, or, a new hope.</h3>
+    <p>
+        What if we didn't have to pay Apple, AWS, Google, or Microsoft to host our content?  What if backing up your cat videos just meant keeping copies of your friends' videos, and they kept copies of yours too?  What if we could simultaneously solve the bandwith constraints of tranditional networks that necessitate things like CDN's and high speed private networks, and of creating local redundancy in each operating zone?  
+
+        These are the sorts of engineer and user stories, that motivate the development of the next generation of the internet.
+
+        Much like the early electrical grid wasn't designed with user convenience, much less safety in mind, the large enterprises that built the profit-centric web 2.0, didn't spend a lot of time baking in user convenience. 
+
+        From a user's perspective, this could be the largest democratizing force in technology to date.  It's the change from powerless to abundant.  It's like solar power on your house and getting paid for your extra energy, instead of having to pay for power.  With decentralzied compute and file storage networks, the costs of entry are drastically lowered.   Literally changes the game so that you no longer need a gigantic datacenter and investment of millions to be able to play the hosting game.  If you just want to host a few of your own photos, you can do that, and have some basic tools to share.  Moreover, this opens the door for regular people like myself, anyone with the wherewithal to read the freely-provided manual, and hardware many gamers and content creators already have, to stop having their creative processes under the control of large enterprise, and lead more independent, profitable, and free lives.
+
+        From an engineer's perspective, that's why decentralized applications are so exciting-- there's no need for a central load balancer to direct traffic, the transport protocol does that. There's no risk of a local outage, I just have to specify an appropriate level of content redundancy-- which can help with geographic load distribution, instead of having to require more redundancy in a given region.  Generally speaking, there's no need to think about constrained networks, when all users are also peers.  There are a new set of challenges, though.  What if you need to keep some things private, on fundamentally a public network?  
+    </p>
+    <h3>Drawing a map.</h3>
+    <p> A permissions model requires two things-- identities, and entitlements.  Who is the user, and what can they do?  From there, we can add layers of complexity refining exactly what a user can do-- whether a user can read, or write, etc, but the core concepts our model will have to build around is some type of identity, and some type of entitlement to be granted (or denied). 
+
+        One lesson from past startup life, is that even if you run a centralzied identity system like active directory, or even just a listing of users in google suite, you wind up needing something to manage that list, that you fully control.  In time various use cases will dictate that one user requries attributes that aren't relevant to other users.  This makes it helpful to have an identity store capable of neatly adding attribute sets only to specific users.  This is where some oranizations have developed custom internal identity recordkeeping systems, and SSO providers have come to offer integrations to various systems.
+
+        Thinking about these challenges in a decentralized world, it becomes clear that the identiy of the user is the part we'll have the most difficulty verifying.  
+
+        A potential solution is for an organization to develop a decentralized application, which stores records of SSID's of known users, and leverages a system not dissimilar to PGP key signing, to establish a high degree of trust and verifyability about a user's identity. 
+
+        In this model, an organizations' dapps' data store would esentially be a simple listing of SSID's (or some standard idenity type[s]), with two types of metadata stored for that identity.  First would be the verification records of the identiy-- who has signed to verify the key belongs to the expected user?  This will be critical as a foundation layer, to check that users are verified (to potentially higher levels for higher security permissions)  Second would be the the entitlements granted to that identiy.  This would be the core data persisted in an encrypted fashion to the blockchain this proposed dapp runs on. Selecting the identity type to build around will be critical.  Ideally the identity type should be extensible, so that if for example "Alice" needs a profile in a system with unique attributes that "Bob" doesn't need to exist in, we can avoid extending any base user data schemas, and maintain a clean way to add user-specific attributes. 
+
+        The dapp itself would be a tool for granting and approving permissions for the identities we've just discussed.  This dapp could be developed to do things like verify approval from X of Y authorized users in a multisig wallet, to allow for a standard, automated, appproval workflow.  In this fashion, we can (at least in theory) leverage decentralzied networks, compute, and storage, to verify and assign privelege to a user's trusted identity.  This is where we might also develop logic to handle different identity types, if we had to for example support some non-SSID based identity that has yet to be imagined. In theory, we would simply be mapping attribute values from each supported identity type, to the supported identity verification records, and entitlement records.
+
+        From a user's perspective, the organizations identity store dapp might eventually be developed to link out to the various resources granted to that user, whether those were "traditional" web utilities like email, or even to other custom dapps the organization might leverage for private file sharing internally, etc.
+
+    </p>
+    <footer>
+        <hr />
+        Created with ❤️ by the IPFS team and brutally hacked by Jeff.
+    </footer>
+</body>
+
+</html>
